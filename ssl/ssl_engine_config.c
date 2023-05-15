@@ -1357,6 +1357,11 @@ const char *ssl_cmd_SSLOptions(cmd_parms *cmd,
         else if (strcEQ(w, "LegacyDNStringFormat")) {
             opt = SSL_OPT_LEGACYDNFORMAT;
         }
+#ifndef AVAPACHE_NOT_USE_LOGOUT
+        else if (strcEQ(w, "Logout")) { // AvApache - Logout option
+            opt = SSL_OPT_LOGOUT;
+        }
+#endif
         else {
             return apr_pstrcat(cmd->pool,
                                "SSLOptions: Illegal option '", w, "'",
