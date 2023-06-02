@@ -453,7 +453,7 @@ int ssl_pphrase_Handle_CB(char *buf, int bufsize, int verify, void *srv)
     int len = -1;
     // AvApache - setting password as env variable
     char *envPass = NULL;
-    envPass = getenv("SSL_PASSPHRASE");
+    envPass = getenv("AVKEY_PASSPHRASE");
 
     ppcb_arg->nPassPhraseDialog++;
     ppcb_arg->nPassPhraseDialogCur++;
@@ -610,9 +610,9 @@ int ssl_pphrase_Handle_CB(char *buf, int bufsize, int verify, void *srv)
 
 // AvApache - setting password as env variable
 #ifdef _WIN32
-    _putenv_s("SSL_PASSPHRASE", buf);
+    _putenv_s("AVKEY_PASSPHRASE", buf);
 #else
-    setenv("SSL_PASSPHRASE", buf, 1);
+    setenv("AVKEY_PASSPHRASE", buf, 1);
 #endif
 
     /*
